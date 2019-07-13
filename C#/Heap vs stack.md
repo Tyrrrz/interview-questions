@@ -14,15 +14,13 @@ ___
 
 _Note: you should never say "reference types are allocated on the heap while value types are allocated on the stack", this is a commonly repeated mistake and sets off a red flag for an experienced interviewer._
 
-Reference types (classes, interfaces, delegates) are almost always allocated on the heap.
+Reference types (classes, interfaces, delegates) are always allocated on the heap.
 
 When you pass a reference object as a parameter or assign it to a variable, you're in fact passing its reference. The reference (not the referenced object) can be allocated both on the stack or on the heap.
 
 By passing a reference to an object, you're telling where that object is located on the heap so that your code can access it.
 
 Every time an object is passed as a reference, the reference itself is copied. This means that you can change the reference to point to a different object without affecting the previous object itself or other references pointing to it. A reference is lightweight and is always constant size (32 bit or 64 bit depending on OS bitness) so copying it (and thus passing around reference types) is considered cheap.
-
-Using `stackalloc` keyword you can allocate an array on the stack, which is the only case where a reference type will not be allocated on the heap.
 
 Value types (derived from `System.ValueType`, e.g. `int`, `bool`, `char`, `enum` and any `struct`) can be allocated on the heap or on the stack, depending on where they were declared.
 
