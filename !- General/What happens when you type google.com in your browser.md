@@ -7,7 +7,7 @@ ___
 Upon typing in "google.com" and pressing Enter, the browser takes a number of steps which can be outlined as:
 
 - Resolve IP address of the URL via DNS
-- Generate an HTTP request with headers (accept, user-agent, cookie, etc)
+- Generate an HTTP request with headers (`accept`, `user-agent`, `cookie`, etc)
 - Open an HTTP connection to the resolved IP address
 - Send the request to the server
 - Receive the response from the server
@@ -29,6 +29,8 @@ For example, it can redirect to a different resource on a 301/302/303/307 status
 Browsers also respect policies regulated by the server, e.g. `cache-control` header which instructs how the resources can be cached.
 
 Response headers may also contain information regarding the response content, including its type, length, and encoding, which may be used by the browser to properly display the content.
+
+___
 
 **Q: What is DNS?**
 
