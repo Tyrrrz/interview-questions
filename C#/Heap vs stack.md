@@ -14,19 +14,22 @@ ___
 
 _Note: you should never say "reference types are allocated on the heap while value types are allocated on the stack", this is a commonly repeated mistake and sets off a red flag for an experienced interviewer._
 
-Reference types (classes, interfaces, delegates) are always allocated on the heap and never on the stack.
+Reference types (classes, interfaces, delegates) are almost always allocated on the heap.
 
 When you pass a reference object as a parameter or assign it to a variable, you're in fact passing its reference. The reference (not the referenced object) can be allocated both on the stack or on the heap.
 
-By passing a reference to an object, you're effectively telling where that object is located on the heap so that your code can access it.
+By passing a reference to an object, you're telling where that object is located on the heap so that your code can access it.
 
 Every time an object is passed as a reference, the reference itself is copied. This means that you can change the reference to point to a different object without affecting the previous object itself or other references pointing to it. A reference is lightweight and is always constant size (32 bit or 64 bit depending on OS bitness) so copying it (and thus passing around reference types) is considered cheap.
 
-Value types (derived from `System.ValueType`, e.g. `int`, `bool`, `char`, `enum` and any `struct`) can be allocated on the heap or on the stack, depending where they were declared.
+Using `stackalloc` keyword you can allocate an array on the stack, which is the only case where a reference type will not be allocated on the heap.
 
-- If the value type was declared inside a method then it's stored on the *stack*.
+Value types (derived from `System.ValueType`, e.g. `int`, `bool`, `char`, `enum` and any `struct`) can be allocated on the heap or on the stack, depending on where they were declared.
+
+- If the value type was declared as a variable inside a method then it's stored on the *stack*.
+- If the value type was declared as a method parameter then it's stored on the *stack*.
 - If the value type was declared as a member of a class then it's stored on the *heap*, along with its parent.
-- If the value type was declared as a member of another value type then it's stored wherever that value type is stored.
+- If the value type was declared as a member of a struct then it's stored wherever that struct is stored.
 
 Starting with C#7.2, a `struct` can be declared as `ref struct`, in which case it will *always* be allocated on the stack, preventing it from being declared inside reference types.
 
@@ -34,7 +37,7 @@ Instances of value types are passed by copy (unless used with reference semantic
 
 Because copying value types can get expensive depending on the size of the object, it's not recommended to declare memory-heavy objects as value types.
 
-Since every type in C# derives from `System.Object`, value types can be assigned to variables or passed to methods that expect an `object`. In such cases, the value is copied and stored on the heap wrapped as a reference type, an operation known as *boxing*.
+Since every type in C# derives from `System.Object`, value types can be assigned to variables or passed to methods that expect an `object`. In such cases, the value is copied and stored on the heap wrapped as a reference type, in an operation known as *boxing*.
 
 ___
 
