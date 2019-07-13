@@ -36,9 +36,9 @@ ___
 
 DNS, which stands for Domain Name System, is essentially a dictionary that maps URLs of Internet resources to their corresponding IP addresses. Most people call it "the phonebook of the Internet".
 
-In most cases, a DNS server IP address is provided by the ISP, which can be configured on a router or on individual machines. It's also possible to use any other DNS server by setting the corresponding IP address in system's settings.
+In most cases, the IP of the first outbound DNS server is provided by the ISP, which can be configured on a per-router or per-machine basis. It's also possible to use any other DNS server by setting the corresponding IP address in system's settings.
 
-Any individual DNS server may route a query to a different DNS server if it doesn't have the corresponding DNS record.
+Any individual DNS server may route a query to a different DNS server if it doesn't have the requested DNS record.
 
 Browsers and operating systems have their own local DNS cache which helps avoid querying DNS servers every time.
 
@@ -56,4 +56,4 @@ ___
 
 **Q: What is a web server?**
 
-Web server is a piece of software that handles HTTP requests, e.g. IIS, nginx, Apache, Kestrel, etc. It receives an incoming connection from a client (e.g. browser), routes it to a specific handler based on request parameters (i.e. relative URL, headers, content), processes it, and then returns a response.
+Web server is a piece of software that handles HTTP requests, e.g. IIS, nginx, Apache, Kestrel, etc. It receives an incoming request from a client (e.g. browser), routes it to a specific handler based on request parameters (i.e. URL, headers, content), processes it, and then returns a response.
