@@ -12,7 +12,7 @@ We use `await` keyword to materialize the task into resulting value. Methods tha
 
 ___
 
-**Q: What's the difference between the asynchronous programming and multithreaded programming?**
+**Q: What's the difference between asynchronous programming and multithreaded programming?**
 
 An asynchronous task does not necessarily represent execution on a separate thread. You can think of an asynchronous operation as just an aggregation of two events -- start and finish.
 
